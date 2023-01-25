@@ -31,3 +31,20 @@ export async function getUserCart(req, res){
         return res.status(500).send(errors)        
     }
 }
+
+export async function deleteItemCart(req, res){
+
+    const {userId} = res.local.session
+    const {itemId} = req.body
+
+    if(!userId) res.status(401).send("Missing userId")
+    try {
+
+        await db.collection('cart').deleteOne({userId, itemId})
+
+        res.status(200).send("Item deleted")
+    } catch (error) {
+        const errors = error.details.map(detail => detail.message)
+        return res.status(500).send(errors)
+    }
+}
