@@ -1,9 +1,9 @@
-import Joi, { string } from "joi";
+import Joi from "joi";
 
 const cartObjectSchema = Joi.object({
-    userId: string()
+    userId: Joi.string()
         .required(),
-    itemId: string()
+    itemId: Joi.string()
         .required
 })
 

@@ -1,10 +1,10 @@
 import { addToCart, getUserCart, deleteItemCart } from "../controller/cartController.js";
 import { Router } from "express";
-import { userAuth } from "../middlewares/userAuth.middleware";
+import { userAuth } from "../middlewares/userAuth.middleware.js";
 import { schemaValidation } from "../middlewares/schemaValidation.middleware.js";
-import { cartObjectSchema } from "../schema/cartSchema.js";
+import  cartObjectSchema  from "../schema/cartSchema.js";
 
-cartRouter = Router()
+const cartRouter = Router()
 
 cartRouter.post("/into-cart", userAuth, schemaValidation(cartObjectSchema), addToCart);
 
