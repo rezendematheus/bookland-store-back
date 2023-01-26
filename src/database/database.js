@@ -9,9 +9,9 @@ let db;
 
 try {
     await mongoClient.connect()
-    const db = mongoClient.db("bookland-database")
+     db = mongoClient.db("bookland-database")
 } catch (error) {
-    
+    console.log("Deu erro no mongodb", error.message);
 }
 
 export default db
