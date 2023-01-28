@@ -43,9 +43,11 @@ async function singIn(req, res){
         if(!Token){
             const token=uuid();
             mongo.collection("sessions").insertOne({userId: user._id, token});
+            const Token = await mongo.collection("sessions").findOne({userId: user._id});
+            return res.status(200).send(Token);
         }
 
-        return res.status(200).send(token);
+        return res.status(200).send(Token);
     }catch(error){
         console.log(error);
         return res.sendStatus(500);
