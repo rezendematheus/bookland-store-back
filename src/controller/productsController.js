@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb"
 import db from "../database/database.js"
 
 
@@ -20,6 +21,19 @@ export async function getAllProducts(req, res){
     
         const allProducts = await db.collection('products').find().toArray()
         return res.status(200).send(allProducts)
+            
+     } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
+export async function getBook(req, res){
+    const id = req.params.id
+
+    try {
+    
+        const book = await db.collection('products').findOne({_id:ObjectId(id)})
+        return res.status(200).send(book)
             
      } catch (error) {
         return res.status(500).send(error.message)
