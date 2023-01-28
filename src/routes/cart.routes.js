@@ -7,5 +7,7 @@ import  cartObjectSchema  from "../schema/cartSchema.js";
 const cartRouter = Router()
 
 cartRouter.post("/into-cart", userAuth, schemaValidation(cartObjectSchema), addToCart);
+cartRouter.get("/get-cart", userAuth, schemaValidation(cartObjectSchema), getUserCart);
+cartRouter.post("/delete-item-cart", userAuth, schemaValidation(cartObjectSchema), deleteItemCart);
 
 export default cartRouter
