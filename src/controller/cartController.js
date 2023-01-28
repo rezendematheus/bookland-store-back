@@ -4,6 +4,8 @@ export async function addToCart(req, res){
     const {userId} = res.locals.session
     const { itemId } = req.body
 
+        console.log(userId)
+    
     if(!userId) res.status(401).send("Missing userId")
 
     try {
