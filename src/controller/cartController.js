@@ -1,7 +1,7 @@
 import db from '../database/database.js'
 
 export async function addToCart(req, res){
-    const {userId} = res.locals.session
+    const { userId } = res.locals.session
     const { itemId } = req.body
 
     if(!userId) res.status(401).send("Missing userId")
