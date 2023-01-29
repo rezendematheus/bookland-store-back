@@ -32,7 +32,7 @@ export async function getBook(req, res){
 
     try {
     
-        const book = await db.collection('products').findOne({_id:ObjectId(id)})
+        const book = await db.collection('products').findOne({id})
         return res.status(200).send(book)
             
      } catch (error) {
