@@ -39,3 +39,16 @@ export async function getBook(req, res){
         return res.status(500).send(error.message)
     }
 }
+
+export async function postBook(req, res){
+    const {id,titulo,autor,categoria,valor,img,descricao} = req.body
+
+    try {
+        await db.collection("products").insertMany([{id,titulo,autor,categoria,valor,img,descricao}])
+        return res.status(200).send("ok")
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+
+
+}
