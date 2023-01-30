@@ -8,7 +8,7 @@ const cartRouter = Router()
 
 cartRouter.post("/into-cart", userAuth, schemaValidation(cartObjectSchema), addToCart);
 cartRouter.get("/get-cart", userAuth,  getUserCart);
-cartRouter.post("/delete-item-cart", userAuth, schemaValidation(cartObjectSchema), deleteItemCart);
-cartRouter.post("/delete-many-cart", userAuth, deleteManyCart);
+cartRouter.delete("/delete-item-cart", userAuth, schemaValidation(cartObjectSchema), deleteItemCart);
+cartRouter.delete("/delete-many-cart", userAuth, deleteManyCart);
 
 export default cartRouter
